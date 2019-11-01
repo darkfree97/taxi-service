@@ -1,0 +1,16 @@
+<div class="main">
+  <div class="control-form">
+    <div>
+      <mat-list *ngIf="clients.length > 0">
+        <mat-list-item *ngFor="let client of clients;" (click)="select(client)" [ngClass]="{'selected': ride.client && client.id === ride.client.id}">
+          <div style="width: 100%; text-align: center;">{{ client.first_name }} {{ client.last_name }}</div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+  <div class="map"
+       leaflet
+       [leafletOptions]="options"
+       [leafletLayers]="ridesLayer" (leafletMapReady)="onMapReady($event)">
+  </div>
+</div>

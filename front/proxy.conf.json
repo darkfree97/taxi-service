@@ -1,0 +1,17 @@
+{
+  "/backend": {
+    "target": "http://localhost:8000",
+    "secure": false,
+    "pathRewrite": {
+      "^/backend": ""
+    }
+  },
+
+  "/osrm": {
+    "target": "http://localhost:5000/route/v1/",
+    "secure": false,
+    "pathRewrite": {
+      "^/osrm": ""
+    }
+  }
+}

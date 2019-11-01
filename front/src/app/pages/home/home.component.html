@@ -1,0 +1,31 @@
+<div class="main">
+  <div class="map"
+       leaflet
+       [leafletOptions]="options"
+       [leafletLayers]="driverAreas" (leafletMapReady)="onMapReady($event)">
+  </div>
+  <div class="users">
+    <div class="drivers list">
+      <label (click)="displayAllDrivers()">Drivers</label>
+      <ul>
+        <li *ngFor="let driver of drivers;" (click)="driverClicked(driver)">
+          <div>
+            <span>{{driver.first_name}} {{driver.last_name}}</span>
+            <p>{{driver.mobile_phone}}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="clients list">
+      <label>Available clients</label>
+      <ul>
+        <li *ngFor="let client of clients;">
+          <div>
+            <span>{{client.first_name}} {{client.last_name}}</span>
+            <p>{{client.mobile_phone}}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

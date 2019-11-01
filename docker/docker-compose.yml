@@ -1,0 +1,52 @@
+version: '3'
+
+
+services:
+  app:
+    build:
+      context: ../backend
+      dockerfile: ../docker/back/Dockerfile
+    container_name: "app"
+    image: "taxi-service"
+    command: bash -c "./wait.sh db:5432 -- python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./wait.sh:/backend/wait.sh
+      - ../backend:/backend
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+  db:
+    image: kartoza/postgis
+    container_name: "db"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=db_user
+      - POSTGRES_PASSWORD=db_pass
+      - POSTGRES_DB=taxi_service
+    networks:
+      - default
+  migration:
+    image: "taxi-service"
+    container_name: "migration"
+    command: bash -c "./wait.sh db:5432 -- python manage.py migrate && python manage.py shell -c \"from django.contrib.auth.models import User; User.objects.create_superuser('root', 'email@example.com', 'toor')\""
+    volumes:
+      - ./wait.sh:/backend/wait.sh
+    depends_on:
+      - app
+      - db
+  osrm:
+    image: irony/osrm5
+    container_name: "osrm"
+    volumes:
+      - /data
+    ports:
+      - 5000:5000
+    command: ./start.sh Ukraine http://download.geofabrik.de/europe/ukraine-latest.osm.pbf
+    networks:
+      - default
+
+networks:
+  default:
+    driver: "bridge"

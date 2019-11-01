@@ -1,0 +1,26 @@
+<div class="main">
+  <div class="control-form">
+    <form (submit)="create()">
+      <mat-list *ngIf="clients.length > 0">
+        <mat-list-item *ngFor="let client of clients;" (click)="select(client)" [ngClass]="{'selected': ride.client && client.id === ride.client.id}">
+          <div style="width: 100%; text-align: center;">{{ client.first_name }} {{ client.last_name }}</div>
+        </mat-list-item>
+      </mat-list>
+      <mat-form-field><input matInput placeholder="Full name" readonly name="full_name" type="text" value="{{ride.client ? ride.client.first_name + ' ' + ride.client.last_name: ''}}"></mat-form-field>
+      <mat-form-field class="by-two-sides"><input matInput placeholder="Start" readonly name="start" type="text" value="{{ride.start}}"></mat-form-field>
+      <mat-form-field class="by-two-sides"><input matInput placeholder="End" readonly name="end" type="text" value="{{ride.end}}"></mat-form-field>
+      <mat-form-field class="by-two-sides">
+        <input matInput [matDatepicker]="dp3" placeholder="Date" name="date" [(ngModel)]="ride.date" readonly>
+        <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+        <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="by-two-sides"><input matInput placeholder="Time" name="time" type="time" [(ngModel)]="ride.time"></mat-form-field>
+      <button mat-raised-button type="submit" *ngIf="isValid()">Create</button>
+    </form>
+  </div>
+  <div class="map"
+       leaflet
+       [leafletOptions]="options"
+       (leafletMapReady)="onMapReady($event)">
+  </div>
+</div>

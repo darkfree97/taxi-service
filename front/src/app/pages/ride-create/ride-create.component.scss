@@ -1,0 +1,59 @@
+.main {
+  display: flex;
+  flex-direction: row;
+
+  .control-form {
+    width: calc(100vw - 70%);
+    height: calc(100vh - 60px);
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: space-between;
+      justify-content: center;
+
+      mat-form-field {
+        padding: 0 5%;
+        width: 90%;
+      }
+
+      mat-form-field.by-two-sides {
+        width: 40%;
+      }
+
+      mat-list {
+        width: 90%;
+        margin-bottom: 1em;
+        overflow-y: auto;
+
+        mat-list-item {
+          width: calc(100% - 4px);
+          border: 2px solid white;
+          border-radius: 5px;
+          margin-bottom: 2px;
+          cursor: pointer;
+        }
+
+        mat-list-item.selected {
+          color: deeppink;
+        }
+      }
+
+      mat-progress-bar {
+        width: 90%;
+        margin-left: 5%;
+        margin-bottom: 10px;
+      }
+
+      button {
+        width: 90%;
+      }
+    }
+  }
+
+  .map {
+    width: calc(100vw - 30%);
+    height: calc(100vh - 60px);
+    color: black;
+  }
+}

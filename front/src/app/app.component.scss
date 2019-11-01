@@ -1,0 +1,18 @@
+mat-toolbar {
+  mat-toolbar-row {
+    cursor: pointer;
+  }
+}
+mat-sidenav-container {
+  height: calc(100vh - 60px);
+
+  mat-sidenav {
+    width: 200px;
+    mat-nav-list {
+      .active {
+        color: deeppink;
+        background: rgba(28, 28, 28, 0.9);
+      }
+    }
+  }
+}

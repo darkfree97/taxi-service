@@ -1,0 +1,43 @@
+.main {
+  display: flex;
+  flex-direction: row;
+
+  .control-form {
+    width: calc(100vw - 70%);
+    height: calc(100vh - 60px);
+    form {
+      text-align: center;
+      mat-form-field {
+        padding: 0 5%;
+        width: 90%;
+      }
+      mat-list {
+        width: 90%;
+        padding: 0;
+        margin-left: 5%;
+        margin-bottom: 1em;
+        overflow-y: auto;
+        mat-list-item {
+          width: calc(100% - 4px);
+          border: 2px solid white;
+          border-radius: 5px;
+          margin-bottom: 2px;
+          cursor: pointer;
+        }
+      }
+      mat-progress-bar {
+        width: 90%;
+        margin-left: 5%;
+        margin-bottom: 10px;
+      }
+      button {
+        width: 90%;
+      }
+    }
+  }
+
+  .map {
+    width: calc(100vw - 30%);
+    height: calc(100vh - 60px);
+  }
+}

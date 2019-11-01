@@ -1,0 +1,23 @@
+<div class="main">
+  <div class="control-form">
+    <form (submit)="create()">
+      <mat-form-field><input matInput placeholder="First name" name="first_name" type="text" [(ngModel)]="driver.first_name"></mat-form-field>
+      <mat-form-field><input matInput placeholder="Last name" name="last_name" type="text" [(ngModel)]="driver.last_name"></mat-form-field>
+      <mat-form-field><input matInput placeholder="Mobile phone" name="phone" type="phone" [(ngModel)]="driver.mobile_phone"></mat-form-field>
+      <mat-form-field><input matInput placeholder="Password" name="password" type="password" [(ngModel)]="driver.password"></mat-form-field>
+      <mat-form-field><input matInput placeholder="Working area" name="region" type="text" [(ngModel)]="driver.region" (change)="areaChanged()"></mat-form-field>
+      <mat-progress-bar mode="indeterminate" *ngIf="spinnerToggle"></mat-progress-bar>
+      <mat-list *ngIf="foundedRegions.length > 0">
+        <mat-list-item *ngFor="let region of foundedRegions;" (click)="selectRegion(region)">
+          <div style="width: 100%; text-align: center;">{{ region.display_name }}</div>
+        </mat-list-item>
+      </mat-list>
+      <button mat-raised-button type="submit" *ngIf="isValid()">{{ submitBtnText }}</button>
+    </form>
+  </div>
+  <div class="map"
+       leaflet
+       [leafletOptions]="options"
+       (leafletMapReady)="onMapReady($event)">
+  </div>
+</div>
