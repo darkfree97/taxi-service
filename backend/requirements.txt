@@ -2,7 +2,7 @@ Django==2.2.6
 django-choices==1.7.0
 django-extensions==2.2.5
 django-filter==2.2.0
-djangorestframework==3.10.3
+djangorestframework==3.11.2
 djangorestframework-gis==0.14
 GDAL==2.3.2
 psycopg2==2.8.4
