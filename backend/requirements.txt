@@ -1,4 +1,4 @@
-Django==2.2.6
+Django==2.2.21
 django-choices==1.7.0
 django-extensions==2.2.5
 django-filter==2.2.0
